@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osoviz - Input</title>
+</head>
+
+<body>
+
+    <header>
+        <p>Osoviz</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="input.html" aria-current="page">Input</a>
+            <a href="generate.html">Generate</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <h1>Data Input</h1>
+
+        <section>
+            <h2>Data Table</h2>
+
+            <p id="data-input-help">Enter data directly, or paste cells copied from Excel or CSV into the table.</p>
+            <!--차트 입력가능하도록 구성-->
+        </section>
+
+        <!--차트 업로드-->
+        <section>
+            <h2>File Upload</h2>
+
+            <label>
+                Choose a CSV or Excel file:
+                <input id="data-file" name="data-file" type="file" accept=".csv,.xlsx,.xls">
+            </label>
+            <p id="file-upload-status" role="status"></p>
+            <p id="data-input-error" role="alert"></p>
+
+        </section>
+
+
+        <!--차트타입 선택-->
+        <section>
+            <h2>Chart Type</h2>
+
+            <fieldset id="chart-type-options">
+                <legend>Select a chart type</legend>
+
+                <label>
+                    <input type="radio" name="chart-type" value="bar">
+                    Bar
+                </label>
+
+                <label>
+                    <input type="radio" name="chart-type" value="line">
+                    Line
+                </label>
+
+                <label>
+                    <input type="radio" name="chart-type" value="pie">
+                    Pie
+                </label>
+
+                <label>
+                    <input type="radio" name="chart-type" value="scatter">
+                    Scatter
+                </label>
+
+                <label>
+                    <input type="radio" name="chart-type" value="bubble">
+                    Bubble
+                </label>
+
+            </fieldset>
+        </section>
+
+
+        <!--색약유형 선택-->
+        <section>
+            <h2>Color Vision Type</h2>
+
+            <fieldset id="color-vision-options">
+                <legend>Select a color vision type</legend>
+
+                <label>
+                    <input type="radio" name="color-vision-type" value="general">
+                    General
+                </label>
+
+                <label>
+                    <input type="radio" name="color-vision-type" value="protanopia">
+                    Protanopia
+                </label>
+
+                <label>
+                    <input type="radio" name="color-vision-type" value="deuteranopia">
+                    Deuteranopia
+                </label>
+
+                <label>
+                    <input type="radio" name="color-vision-type" value="tritanopia">
+                    Tritanopia
+                </label>
+
+            </fieldset>
+        </section>
+
+        <a id="next-step" href="generate.html">Next</a>
+
+    </main>
+
+
+    <footer>
+        <p>Osoviz</p>
+    </footer>
+
+</body>
+
+</html>
