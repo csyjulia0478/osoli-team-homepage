@@ -10,7 +10,7 @@ export const DEFAULT_STATE = {
   chartType: "bar",
 
   // normal, protanopia, deuteranopia, tritanopia
-  cvdType: "normal",
+  cvdType: "general",
 
   paletteId: "default",
 
