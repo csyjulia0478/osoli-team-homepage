@@ -17,7 +17,7 @@ It enables users to generate and convert charts using CVD-safe color palettes, h
 
 - Interactive data input and editing
 - CSV and Excel file upload
-- Five visualization types: Bar, Line, Pie, Scatter, Table
+- Five visualization types: Bar, Line, Pie, Scatter, Bubble
 - Accessible chart generation and customization
 - CVD-safe color palettes
 - High-contrast visualization
