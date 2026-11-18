@@ -1,0 +1,318 @@
+:root {
+    --color-background: #FFFFFF;
+    --color-surface: #EAEFF5;
+
+    --color-text-main: #111111;
+    --color-text-sub: #333333;
+
+    --color-primary: #005A8C;
+    --color-primary-hover: #003F63;
+
+    --color-border: #595959;
+    --color-card-border: #6B7480;
+
+    --color-error: #8B1A2B;
+
+    --color-inactive-bg: #D9DEE5;
+    --color-inactive-text: #4D4D4D;
+
+    --space-small: 8px;
+    --space-middle: 16px;
+    --space-large: 24px;
+    --space-extra-large: 32px;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text-main);
+    font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    margin: 0 0 var(--space-middle);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+p, figure, dl {
+    margin: 0 0 var(--space-middle);
+}
+
+dd {
+    margin: 0 0 var(--space-small) var(--space-large);
+}
+
+input, select, textarea, button {
+    margin: 0;
+}
+
+details > p {
+    margin-top: var(--space-middle);
+}
+
+main > section {
+    margin-bottom: var(--space-middle);
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-middle);
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-card-border);
+}
+
+header > p {
+    margin: 0;
+    font-weight: 700;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+header nav a {
+    color: var(--color-text-main);
+    text-decoration: underline;
+}
+
+header nav a[aria-current="page"] {
+    font-weight: 700;
+    text-decoration-thickness: 3px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+main {
+    padding: 32px;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+button,
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 24px;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    color: #FFFFFF;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover:not(:disabled),
+.button:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    color: #FFFFFF;
+}
+
+.button-secondary {
+    background-color: #FFFFFF;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.button-secondary:hover,
+button.button-secondary:hover:not(:disabled) {
+    background-color: var(--color-background);
+    border-color: var(--color-primary-hover);
+    color: var(--color-primary-hover);
+}
+
+button:disabled {
+    background-color: var(--color-inactive-bg);
+    border-color: var(--color-inactive-bg);
+    color: var(--color-inactive-text);
+    cursor: not-allowed;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="file"],
+select,
+textarea {
+    max-width: 100%;
+    min-height: 44px;
+    padding: 12px;
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text-main);
+    font: inherit;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: var(--color-primary);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+fieldset {
+    min-width: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-small);
+    padding: 24px;
+    border: 1px solid var(--color-card-border);
+    border-radius: 12px;
+}
+
+legend {
+    padding: 0 8px;
+    font-weight: 700;
+}
+
+.card {
+    padding: 24px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: 12px;
+}
+
+.card + .card {
+    margin-top: 16px;
+}
+
+.choice,
+fieldset label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    min-height: 44px;
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.choice:has(input:checked),
+fieldset label:has(input:checked) {
+    border: 3px solid var(--color-primary);
+}
+
+.choice:has(input:checked)::after,
+fieldset label:has(input:checked)::after {
+    content: "\2713";
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+select:has(option:checked:not([value=""])) {
+    border: 3px solid var(--color-primary);
+}
+
+select:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.sub-text,
+figcaption,
+[id$="-help"],
+[role="status"] {
+    color: var(--color-text-sub);
+    font-size: 0.875rem;
+}
+
+.error-message,
+[role="alert"] {
+    color: var(--color-error);
+    font-size: 0.875rem;
+}
+
+.error-message:not(:empty)::before,
+[role="alert"]:not(:empty)::before {
+    content: "\2297  Error: ";
+    font-weight: 700;
+}
+
+[role="alert"]:empty,
+[role="status"]:empty {
+    margin: 0;
+}
+
+label > input[type="file"] {
+    display: block;
+    margin-top: var(--space-small);
+}
+
+main > div:has(> .button) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-middle);
+}
+
+.input-error,
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border: 2px solid var(--color-error) !important;
+}
+
+#example-graph {
+    margin-top: var(--space-large);
+    min-height: 240px;
+    padding: 24px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-card-border);
+    border-radius: 12px;
+}
+
+footer {
+    padding: 16px 32px;
+    border-top: 1px solid var(--color-card-border);
+    color: var(--color-text-sub);
+}
+
+footer p {
+    margin: 0;
+}
+
+input[type="file"].has-file {
+    border: 3px solid var(--color-primary);
+}
