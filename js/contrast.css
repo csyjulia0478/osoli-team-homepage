@@ -1,0 +1,89 @@
+/*
+[기본 정보]
+그래프 고대비 옵션을 선택하였을 때, 그래프 주변의 HTML 요소에 적용하는 스타일을 정의한 파일입니다.
+- 헤더, 카드, 입력화면, 데이터 표(Tabulator) 같은 사이트의 일반적인 요소는 건드리지 않습니다.
+- ECharts가 그리는 패턴, 윤곽선, 값 라벨, 축, 범례, 마커 모양, 차트 내부 글자 크기 등에 관여하지 않습니다.
+
+
+[contrast.css 작동 조건]
+- <html>에 data-high-contrast="true"일 때 적용됩니다.
+- 이 속성은 state.js의 state.highContrast (boolean) 값을 따라 공통 JS가 붙입니다.
+  - CSS 안에서 속성을 붙일 수 없으므로, 연결 코드는 아래와 같이 해 주시면 될 것 같습니다! (페이지가 열릴 때 한 번 직접 적용해야 합니다.)
+  - dataset.highContrast -> data-high-contrast (CSS 적용 시 이름)
+  - 붙이는 속성 이름이 data-high-contrast와 다르면 스타일이 켜지지 않습니다!
+
+==========
+
+import { getState, subscribe } from "./state.js";
+
+const apply = (state) => {
+    document.documentElement.dataset.highContrast = String(Boolean(state.highContrast));
+};
+
+apply(getState());
+subscribe(apply);
+
+==========
+
+
+[불러오기]
+- generate.html에서 불러옵니다. (#chart-preview가 있습니다!)
+- common.css의 다음으로 불러오면 됩니다.
+*/
+
+
+
+
+
+/*
+[고대비 색 정의]
+- 고대비 모드가 켜져 있을 때에만 정의됩니다.
+(<html data-high-contrast="true">)의 모든 하위 요소가 물려받습니다.)
+- common.css의 --color-background와 다른 의미의 값이라 따로 정의하였습니다!
+*/
+[data-high-contrast="true"]{
+    --hc-background: #FFFFFF; /* 고대비 그래프 영역 배경 */
+    --hc-ink: #111111; /* 고대비 그래프 글자, 선 */
+}
+
+
+
+
+
+/*
+[그래프 영역]
+- 대상: generate.html의 <div id="chart-preview">
+- 다운로드 이미지의 배경은 ECharts 옵션에서 정합니다.
+- 이 규칙은 화면에서 보이는 모습을 다운로드용 이미지와 맞추기 위한 것입니다.
+*/
+[data-high-contrast="true"] #chart-preview {
+    background-color: var(--hc-background);
+    color: var(--hc-ink);
+}
+
+
+
+
+
+/*
+[툴팁] (현재 주석 처리)
+툴팁은 화면에서만 보이며, 다운로드한 이미지에는 담기지 않습니다.
+
+contrast.css에서 툴팁 모양을 정하는 경우:
+- 다솜 님이 ECharts 옵션에 tooltip: {className: "osoviz-tooltip"}을 넣어 연결할 수 있습니다.
+
+Echarts의 옵션에서 툴팁 모양을 정하는 경우:
+- 아래 블록 삭제해 주시면 됩니다.
+*/
+
+/*
+[data-high-contrast="true"] .osoviz-tooltip {
+    background-color: var(--hc-background) !important;
+    color: var(--hc-ink) !important;
+    border: 3px solid var(--hc-ink) !important;
+    padding: 12px !important;
+    font-size: 1rem !important;
+}
+*/
+ 
+ 
