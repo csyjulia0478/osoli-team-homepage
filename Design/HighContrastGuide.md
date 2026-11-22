@@ -43,6 +43,8 @@ Each series(ex. bar chart's bar) gets its own pattern, in the same order every t
 | Scatter | Marker Shape |
 | Bubble | Pattern |
 
+- **Bubble chart shows the value by bubble size**: The pattern inside the bubble tells series apart. Bubbles are at least 24px wide, so the pattern stays visible even for the smallest value.
+  - Applying patterns to bubble chart is planned to be implemented.
 - **Scatter has no patterns**: a standard ECharts scatter series does not draw patterns on markers (we tested this). Marker shape, outline, and value label do the job instead.
 
 
@@ -63,7 +65,9 @@ Each series(ex. bar chart's bar) gets its own pattern, in the same order every t
 
 
 
-### 3-2. Scatter and bubble charts
+### 3-2. Scatter Chart
+
+Scatter charts use the marker shapes below.
 
 | Number | Marker Shape |
 | -- | -- |
@@ -74,13 +78,7 @@ Each series(ex. bar chart's bar) gets its own pattern, in the same order every t
 | 5 | Rounded square |
 | 6 | Arrow |
 
-
-| Chart | Marker Size | Marker Border |
-| -- | -- | -- |
-| Scatter | 14px or larger | 3px, #111111 |
-| Bubble 24px or larger (a bigger value gives a bigger bubble) | 3px, #111111 |
-- The bubble minimum of 24px keeps the shape visible, even for the smallest value.
-
+- The marker size should be 14px or larger, and the marker border is 3px, #111111.
 
 
 ## 4. Border Thickness
