@@ -373,6 +373,54 @@ export function buildChartOption(state, colors = DEFAULT_COLORS) {
       left: 'center'
     };
   }
-
+  if (state.chartType === 'bubble') formatBubbleChart(option, state.highContrast);
   return option;
+}
+
+function formatBubbleChart(option, highContrast) {
+  // 양 끝 버블이 축 눈금을 덮지 않도록 여백을 둔다.
+  Object.assign(option.xAxis, {
+    scale: true,
+    boundaryGap: ['12%', '12%'],
+    nameLocation: 'middle',
+    nameGap: 32
+  });
+  option.yAxis.boundaryGap = [0, '20%'];
+  option.grid.bottom = 56;
+
+  if (!highContrast) return;
+
+  for (const series of option.series) {
+    series.label = { ...series.label, position: 'right', distance: 5 };
+
+    const fill = series.itemStyle.color;
+    if (!fill?.image) continue; // 단색 버블은 기존 원을 그대로 사용한다.
+
+    const symbols = new Map();
+
+    for (const point of series.data) {
+      const size = Math.ceil(series.symbolSize(point.value));
+
+      if (!symbols.has(size)) {
+        const canvas = document.createElement('canvas');
+        const resolution = 2;
+        canvas.width = canvas.height = size * resolution;
+
+        const ctx = canvas.getContext('2d');
+        ctx.scale(resolution, resolution);
+        ctx.beginPath();
+        ctx.arc(size / 2, size / 2, (size - 3) / 2, 0, Math.PI * 2);
+        ctx.fillStyle = ctx.createPattern(fill.image, 'repeat');
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#111111';
+        ctx.stroke();
+
+        symbols.set(size, 'image://' + canvas.toDataURL('image/png'));
+      }
+
+      point.symbol = symbols.get(size);
+      point.symbolSize = size;
+    }
+  }
 }
