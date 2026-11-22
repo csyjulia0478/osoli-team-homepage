@@ -78,9 +78,9 @@ Echarts의 옵션에서 툴팁 모양을 정하는 경우:
 
 /*
 [data-high-contrast="true"] .osoviz-tooltip {
-    background-color: var(--color-background) !important;
-    color: var(--color-text-main) !important;
-    border: 3px solid var(--color-text-main) !important;
+    background-color: var(--hc-background) !important;
+    color: var(--hc-ink) !important;
+    border: 3px solid var(--hc-ink) !important;
     padding: 12px !important;
     font-size: 1rem !important;
 }
