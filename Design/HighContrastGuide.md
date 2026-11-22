@@ -7,7 +7,7 @@ Since some people cannot distinguish two colors apart even in a CVD-safe palette
 
 - **The palette never changes.** The colors come from the CVD-safe palette user chose.
 - High contrast only adds patterns, bold outlines, bigger value labels, and bigger text on top of it.
-- The chart area always has a **white background(color: #ffffff) with dark ink(color: #111111).**
+- The chart area always has a **white background(color: #ffffff) with dark ink(color: #111111).**: Additionally, high contrast mode's patterns could be marked as #111111 or #ffffff depends on filled colors.
 
 
 
@@ -25,7 +25,7 @@ Each series(ex. bar chart's bar) gets its own pattern, in the same order every t
 | 5 | Triangles | About 5px triangles, 12px apart |
 | 6 | Vertical Stripes | 3px lines, 5px gaps (8px period) |
 
-- **Pattern color**: dark(#111111) or white, whichever contrasts more with the filled color of series. Whatever the fill color is, the pattern always has at least 4.5:1 contrast with white or black.
+- **Pattern color**: dark(#111111) or white(#ffffff), whichever contrasts more with the filled color of series. Patterns are told apart by their shape (stripes, dots, triangles), not by the line color, so the line color may differ between series.
 - They still look different from each other in black and white, and the repeated is short, so even a narrow bar can show the pattern.
 - **After 6 series**, the patterns are repeated in the same order. Show a short notice, for example: "Some patterns are repeated. Use the value labels to tell them apart, or make series 6 or less."
 - **Colors still help understanding.** If the palette has more than 6 colors, repeated patterns come with a different color. So users can distinguish different series.
@@ -41,14 +41,9 @@ Each series(ex. bar chart's bar) gets its own pattern, in the same order every t
 | Pie | Pattern |
 | Line | Line type (solid, dashed, dotted) + marker shape |
 | Scatter | Marker Shape |
-| Bubble | Marker Shape |
+| Bubble | Pattern |
 
 - **Scatter has no patterns**: a standard ECharts scatter series does not draw patterns on markers (we tested this). Marker shape, outline, and value label do the job instead.
-
-- **bubble Charts**
-  - **Implemented**: tell series apart by pattern, using the pattern table in section 2.
-  - **Not implemented**: tell series apart by marker shape, following section 3-2 together with the value labels.
-
 
 
 ### 3-1. Line Chart
