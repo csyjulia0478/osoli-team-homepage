@@ -32,11 +32,12 @@ const el = {};
 // 빈 값 판별 (null, 공백)
 const isEmpty = (v) => v === null || v === undefined || String(v).trim() === '';
 
-// 숫자 변환 (실패 시 null, "1,234"·"12%" 허용)
+// 숫자 변환 (실패 시 null, "12%" 허용, 쉼표는 "1,234" 형식만 허용)
 function toNumber(v) {
   if (v === null || v === undefined || typeof v === 'boolean') return null;
   if (typeof v === 'number') return Number.isFinite(v) ? v : null;
-  const s = String(v).trim().replace(/,/g, '').replace(/%$/, '');
+  let s = String(v).trim().replace(/%$/, '');
+  if (/^[+-]?\d{1,3}(,\d{3})+(\.\d*)?$/.test(s)) s = s.replace(/,/g, '');
   if (!/^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(s)) return null;
   return Number(s);
 }
@@ -217,8 +218,11 @@ function bindEvents() {
     lastCol = null;
   });
 
-  table.on('cellClick', (e, cell) => { lastCol = cell.getColumn(); });
-
+  table.on('cellClick', (e, cell) => {
+    const col = cell.getColumn();
+    if (/^c\d+$/.test(col.getField() || '')) lastCol = col;
+  });
+  
   if (el.next) {
     el.next.addEventListener('click', (e) => {
       if (saveData()) return;
