@@ -1,10 +1,11 @@
 // 색각 유형 선택(FR-03), 유형별 팔레트 표시(FR-04)
 // input.html: 색각 유형 라디오 → state.cvdType 저장
-// generate.html: 유형별 팔레트 드롭다운, 색 견본·설명 표시 → state.paletteId 저장
+// generate.html: 유형별 팔레트 드롭다운, 색 견본·설명·대비율 표시 → state.paletteId 저장
 // 각 페이지에 해당 요소가 있을 때만 동작
 
 import { getState, updateState } from "./state.js";
 import { getPalettesByType, getPaletteInfo } from "./palettes.js";
+import { checkContrast } from "./colorCheck.js";
 
 // input.html: 색각 유형 선택
 function initColorVisionType() {
@@ -44,11 +45,34 @@ function initPaletteSelect() {
   const preview = document.createElement("div");
   document.getElementById("palette-help").after(preview);
   showPalette(preview, current);
+  showContrast(current);
 
   select.addEventListener("change", () => {
+    const palette = getPaletteInfo(cvdType, select.value);
     updateState({ paletteId: select.value });
-    showPalette(preview, getPaletteInfo(cvdType, select.value));
+    showPalette(preview, palette);
+    showContrast(palette);
   });
+}
+
+// Contrast Check 칸: 가장 낮은 대비율, 3:1 미만 색 수와 안내 표시
+function showContrast(palette) {
+  const output = document.getElementById("contrast-ratio");
+  if (!output || !window.chroma) return;
+
+  let note = document.getElementById("contrast-note");
+  if (!note) {
+    note = document.createElement("p");
+    note.id = "contrast-note";
+    output.closest("p").after(note);
+  }
+
+  const { lowest, failing, total } = checkContrast(palette.colors);
+  output.textContent = `${lowest.ratio.toFixed(2)}:1 (lowest, ${lowest.color})`;
+  note.textContent = failing.length
+    ? `${failing.length} of ${total} colors are below 3:1 against the white background. ` +
+      "Turn on high contrast mode to add dark outlines."
+    : "All colors meet 3:1 against the white background.";
 }
 
 // 색 견본, 설명 표시
