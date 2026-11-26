@@ -316,3 +316,24 @@ footer p {
 input[type="file"].has-file {
     border: 3px solid var(--color-primary);
 }
+
+/* 반응형: Generate 페이지 고대비 옵션(체크박스) 영역
+   - 모바일 기본: 안쪽 여백을 줄이고, 선택지를 한 줄씩 폭을 꽉 채워 누르기 쉽게 배치
+   - 768px 이상: 여백을 원래 크기로 되돌리고, 선택지를 내용 크기만큼 가로로 나란히 배치 */
+#high-contrast-options {
+    padding: var(--space-middle);
+}
+
+#high-contrast-options label {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    #high-contrast-options {
+        padding: var(--space-large);
+    }
+
+    #high-contrast-options label {
+        width: auto;
+    }
+}
