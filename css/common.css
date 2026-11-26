@@ -16,10 +16,10 @@
     --color-inactive-bg: #D9DEE5;
     --color-inactive-text: #4D4D4D;
 
-    --space-small: 8px;
-    --space-middle: 16px;
-    --space-large: 24px;
-    --space-extra-large: 32px;
+    --space-small: 0.5rem;
+    --space-middle: 1rem;
+    --space-large: 1.5rem;
+    --space-extra-large: 2rem;
 }
 
 body {
@@ -63,11 +63,12 @@ main > section {
 
 header {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: var(--space-middle);
     justify-content: space-between;
     align-items: center;
-    padding: 16px 32px;
+    padding: var(--space-middle);
     background-color: var(--color-background);
     border-bottom: 1px solid var(--color-card-border);
 }
@@ -79,8 +80,10 @@ header > p {
 
 header nav {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    gap: 16px;
+    align-items: center;
+    gap: var(--space-small);
 }
 
 header nav a {
@@ -100,7 +103,10 @@ header nav a[aria-current="page"] {
 }
 
 main {
-    padding: 32px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-middle);
 }
 
 a {
@@ -128,7 +134,7 @@ button,
     align-items: center;
     justify-content: center;
     min-height: 44px;
-    padding: 12px 24px;
+    padding: 0.75rem 1.5rem;
     background-color: var(--color-primary);
     border: 2px solid var(--color-primary);
     border-radius: 8px;
@@ -137,6 +143,9 @@ button,
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
+    max-width: 100%;
+    text-align: center;
+    overflow-wrap: anywhere;
 }
 
 button:hover:not(:disabled),
@@ -174,7 +183,7 @@ select,
 textarea {
     max-width: 100%;
     min-height: 44px;
-    padding: 12px;
+    padding: 0.75rem;
     background-color: var(--color-surface);
     border: 2px solid var(--color-border);
     border-radius: 8px;
@@ -189,7 +198,7 @@ input[type="checkbox"] {
 
 .form-label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: var(--space-small);
 }
 
 fieldset {
@@ -198,33 +207,34 @@ fieldset {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-small);
-    padding: 24px;
+    padding: var(--space-middle);
     border: 1px solid var(--color-card-border);
     border-radius: 12px;
 }
 
 legend {
-    padding: 0 8px;
+    padding: 0 var(--space-small);
     font-weight: 700;
 }
 
 .card {
-    padding: 24px;
+    min-width: 0;
+    padding: var(--space-middle);
     background-color: var(--color-surface);
     border: 1px solid var(--color-card-border);
     border-radius: 12px;
 }
 
 .card + .card {
-    margin-top: 16px;
+    margin-top: var(--space-middle);
 }
 
 .choice,
 fieldset label {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px;
+    gap: var(--space-small);
+    padding: var(--space-small);
     min-height: 44px;
     border: 2px solid var(--color-border);
     border-radius: 8px;
@@ -297,14 +307,14 @@ textarea[aria-invalid="true"] {
 #example-graph {
     margin-top: var(--space-large);
     min-height: 240px;
-    padding: 24px;
+    padding: var(--space-middle);
     background-color: var(--color-surface);
     border: 1px solid var(--color-card-border);
     border-radius: 12px;
 }
 
 footer {
-    padding: 16px 32px;
+    padding: var(--space-middle);
     border-top: 1px solid var(--color-card-border);
     color: var(--color-text-sub);
 }
@@ -317,22 +327,66 @@ input[type="file"].has-file {
     border: 3px solid var(--color-primary);
 }
 
-/* 반응형: Generate 페이지 고대비 옵션(체크박스) 영역
-   - 모바일 기본: 안쪽 여백을 줄이고, 선택지를 한 줄씩 폭을 꽉 채워 누르기 쉽게 배치
-   - 768px 이상: 여백을 원래 크기로 되돌리고, 선택지를 내용 크기만큼 가로로 나란히 배치 */
-#high-contrast-options {
-    padding: var(--space-middle);
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
+/* Tablet */
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        padding: var(--space-middle) var(--space-large);
+    }
+
+    header nav {
+        flex-direction: row;
+        gap: var(--space-middle);
+    }
+
+    main {
+        padding: var(--space-large);
+    }
+
+    .card,
+    fieldset {
+        padding: var(--space-large);
+    }
+
+    footer {
+        padding: var(--space-middle) var(--space-large);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    header {
+        padding: var(--space-middle) var(--space-extra-large);
+    }
+
+    header nav {
+        gap: var(--space-large);
+    }
+
+    main {
+        padding: var(--space-extra-large);
+    }
+
+    footer {
+        padding: var(--space-middle) var(--space-extra-large);
+    }
+}
+
+/* 반응형: Generate 페이지 고대비 옵션(체크박스) 영역
+   - 모바일 기본: 선택지를 한 줄씩 폭을 꽉 채워 누르기 쉽게 배치
+   - 768px 이상: 선택지를 내용 크기만큼 가로로 나란히 배치 */
 #high-contrast-options label {
     width: 100%;
 }
 
 @media (min-width: 768px) {
-    #high-contrast-options {
-        padding: var(--space-large);
-    }
-
     #high-contrast-options label {
         width: auto;
     }
