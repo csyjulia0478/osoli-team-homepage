@@ -59,7 +59,7 @@
 
 
 
-## 4. Caption (Summary) Area (`figcaption + details`)
+## 4. Caption (Summary) Area
 ### 4-1. Appearance
 
 | Type | Normal Mode | High Contrast Mode |
@@ -68,12 +68,12 @@
 | Statistic Name (dt) | Bold #111111 | Same |
 | Statistic Value (dd) | #333333 | #111111 |
 | More Details(summary) | Bold #005A8C, cursor pointer | Bold, #111111, underlined |
-| Expanded list | 1rem, line-height 1.6 | Same |
-| Spacing | 16px between summary and statistics, 8px between items | Same |
+| Expanded content | 1rem, line-height 1.6 | Same |
+| Spacing | 1rem between summary and statistics, 0.5rem between items | Same |
 | Focus Indicator | 3px #005A8C | Same |
 
 - Since our goal is to provide information not only rely on the color itself, the high-contrast summary is #111111 with underline, so the users can understand they can click it.
-  - Caption text is 16px or larger in both modes, so high contrast changes no sizes here.
+  - Caption text is 1rem or larger in both modes, so high contrast changes no sizes here.
 
 
 
@@ -86,23 +86,54 @@
   - Do not use a *hollow* swatch (`inactiveColor: '#FFFFFF'`) — the text also turns white.
 
 
-- **Caption ids**: the structure below is what the follow-up `contrast.css` PR will target. Tell me if any id changes!
+- **Caption ids**: In the current `generate.html`, the summary, statistics, and details are outside `#chart-caption`, each in its own card. So, next `contrast.css` PR may target those ids!
+
 
 ```html
-<figure>
-  <div id="chart-preview">…chart…</div>
-  <figcaption id="chart-caption">
-    <p id="chart-summary">Summary sentence (summarize().short)</p>
-    <dl id="chart-statistics">
-      <div><dt>Max</dt><dd>34 (B)</dd></div>
-      <div><dt>Min</dt><dd>12 (A)</dd></div>
-      <div><dt>Difference</dt><dd>22</dd></div>
-      <div><dt>Average</dt><dd>23</dd></div>
-    </dl>
-    <details>
-      <summary>More Details</summary>
-      <ul> detail sentences (summarize().details) </ul>
-    </details>
-  </figcaption>
-</figure>
+        <section class="card">
+            <h2>Chart Preview</h2>
+
+            <figure>
+                <div id="chart-preview" aria-describedby="chart-caption chart-summary-text"></div>
+                <p id="chart-status" role="status"></p>
+
+                <figcaption id="chart-caption">
+                    Chart preview
+                </figcaption>
+            </figure>
+
+        </section>
+
+
+        <section class="card">
+            <h2>Chart Summary</h2>
+
+            <p id="chart-summary-text"></p>
+            <dl id="chart-statistics">
+                <dt>Maximum</dt>
+                <dd id="summary-maximum">-</dd>
+
+                <dt>Minimum</dt>
+                <dd id="summary-minimum">-</dd>
+
+                <dt>Difference</dt>
+                <dd id="summary-difference">-</dd>
+
+                <dt>Average</dt>
+                <dd id="summary-average">-</dd>
+            </dl>
+
+        </section>
+
+
+        <section class="card">
+            <h2>Additional Information</h2>
+
+            <details id="chart-details">
+                <summary>More Details</summary>
+
+                <p id="chart-details-content"></p>
+            </details>
+        </section>
 ```
+
