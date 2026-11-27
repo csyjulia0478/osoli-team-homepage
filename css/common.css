@@ -378,3 +378,10 @@ video {
         padding: var(--space-middle) var(--space-extra-large);
     }
 }
+
+
+
+/* ===== Home (index.html) ===== */
+#example-graph img {
+    width: 100%;
+}
