@@ -411,13 +411,59 @@ video {
     footer {
         padding: var(--space-middle) var(--space-extra-large);
     }
-    
-    /*input 페이지*/
+  
+      /*input 페이지*/
     #chart-type-options > label,
     #color-vision-options > label {
         flex: 1 1 calc(33.333% - var(--space-middle));
     }
 }
+
+.data-table-card {
+    min-inline-size: 0;
+}
+
+.data-table-card .data-table-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-small);
+    margin-block-end: var(--space-middle);
+}
+
+.data-table-card .data-table-actions button {
+    min-inline-size: 0;
+    padding-inline: clamp(var(--space-small), 3vw, var(--space-large));
+    overflow-wrap: anywhere;
+}
+
+.data-table-card #data-table {
+    inline-size: 100%;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    border-color: var(--color-card-border);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.data-table-card .tabulator-tableholder {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.data-table-card #data-table .cell-error {
+    color: var(--color-error);
+}
+
+.data-table-card #data-table .cell-placeholder {
+    color: var(--color-text-sub);
+}
+
+@media (min-width: 1024px) {
+    .data-table-card .data-table-actions {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
 
 /* 반응형: Generate 페이지 고대비 옵션(체크박스) 영역
    - 모바일 기본: 선택지를 한 줄씩 폭을 꽉 채워 누르기 쉽게 배치
@@ -426,6 +472,7 @@ video {
     width: 100%;
 }
 
+      
 @media (min-width: 768px) {
     #high-contrast-options label {
         width: auto;
