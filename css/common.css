@@ -334,6 +334,23 @@ video {
     display: block;
 }
 
+/* Input 페이지 기본*/
+#chart-type-options,
+#color-vision-options {
+    flex-direction: column;
+    gap: var(--space-middle);
+}
+
+#data-file,
+#next-step {
+    width: 100%;
+}
+
+#file-upload-status,
+#data-input-error {
+    overflow-wrap: anywhere;
+}
+
 /* Tablet */
 @media (min-width: 768px) {
     header {
@@ -358,6 +375,23 @@ video {
     footer {
         padding: var(--space-middle) var(--space-large);
     }
+    
+    /*input 페이지*/
+    #chart-type-options,
+    #color-vision-options {
+        flex-direction: row;
+    }
+
+    #chart-type-options > label,
+    #color-vision-options > label {
+        flex: 1 1 calc(50% - var(--space-middle));
+    }    
+
+    #data-file,
+    #next-step {
+        width: auto;
+    }
+    
 }
 
 /* Desktop */
@@ -376,6 +410,12 @@ video {
 
     footer {
         padding: var(--space-middle) var(--space-extra-large);
+    }
+    
+    /*input 페이지*/
+    #chart-type-options > label,
+    #color-vision-options > label {
+        flex: 1 1 calc(33.333% - var(--space-middle));
     }
 }
 
