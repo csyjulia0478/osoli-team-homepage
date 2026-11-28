@@ -418,3 +418,16 @@ video {
         flex: 1 1 calc(33.333% - var(--space-middle));
     }
 }
+
+/* 반응형: Generate 페이지 고대비 옵션(체크박스) 영역
+   - 모바일 기본: 선택지를 한 줄씩 폭을 꽉 채워 누르기 쉽게 배치
+   - 768px 이상: 선택지를 내용 크기만큼 가로로 나란히 배치 */
+#high-contrast-options label {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    #high-contrast-options label {
+        width: auto;
+    }
+}
