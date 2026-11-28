@@ -351,6 +351,63 @@ video {
     overflow-wrap: anywhere;
 }
 
+/* Generate 페이지 기본 */
+.generate-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-middle);
+    margin-bottom: var(--space-large);
+}
+
+.generate-preview,
+.generate-settings,
+.generate-info {
+    display: grid;
+    align-content: start;
+    gap: var(--space-middle);
+    min-width: 0;
+}
+
+.generate-layout .card + .card {
+    margin-top: 0;
+}
+
+#chart-preview {
+    width: 100%;
+    max-width: 100%;
+    height: clamp(18rem, 60vw, 30rem);
+}
+
+#chart-preview canvas,
+#chart-preview svg {
+    max-width: 100%;
+}
+
+#chart-statistics {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: var(--space-small) var(--space-middle);
+}
+
+#chart-statistics dt {
+    font-weight: 700;
+}
+
+#chart-statistics dd {
+    margin: 0;
+}
+
+#chart-caption,
+#chart-summary-text,
+#chart-details-content,
+#chart-statistics dd {
+    overflow-wrap: anywhere;
+}
+
+.generate-actions > * {
+    flex: 1 1 100%;
+}
+
 /* Tablet */
 @media (min-width: 768px) {
     header {
@@ -391,6 +448,31 @@ video {
     #next-step {
         width: auto;
     }
+
+    /*generate 페이지*/
+    .generate-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "preview preview"
+            "settings info";
+        gap: var(--space-large);
+    }
+
+    .generate-preview {
+        grid-area: preview;
+    }
+
+    .generate-settings {
+        grid-area: settings;
+    }
+
+    .generate-info {
+        grid-area: info;
+    }
+
+    .generate-actions > * {
+        flex: 0 0 auto;
+    }
     
 }
 
@@ -416,6 +498,14 @@ video {
     #chart-type-options > label,
     #color-vision-options > label {
         flex: 1 1 calc(33.333% - var(--space-middle));
+    }
+
+    /*generate 페이지*/
+    .generate-layout {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        grid-template-areas:
+            "preview settings"
+            "info settings";
     }
 }
 

@@ -25,106 +25,125 @@
 
         <h1>Generate Chart</h1>
 
-        <section class="card">
-            <h2>Chart Preview</h2>
+        <div class="generate-layout">
 
-            <figure>
-                <div id="chart-preview" aria-describedby="chart-caption chart-summary-text"></div>
-                <p id="chart-status" role="status"></p>
+            <!-- 차트 미리보기 -->
+            <div class="generate-preview">
 
-                <figcaption id="chart-caption">
-                    Chart preview
-                </figcaption>
-            </figure>
+                <section class="card">
+                    <h2>Chart Preview</h2>
 
-        </section>
+                    <figure>
+                        <div id="chart-preview" aria-describedby="chart-caption chart-summary-text"></div>
+                        <p id="chart-status" role="status"></p>
 
+                        <figcaption id="chart-caption">
+                            Chart preview
+                        </figcaption>
+                    </figure>
 
-        <section class="card">
-            <h2>Color Palette</h2>
+                </section>
 
-            <label class="form-label" for="color-palette">Select a color palette</label>
-            <select id="color-palette" name="color-palette" aria-describedby="palette-help">
-                <option value="">Select a color palette</option>
-            </select>
-            <p id="palette-help">Available palettes depend on the selected color vision type.</p>
-
-        </section>
+            </div>
 
 
-        <section class="card">
-            <h2>Contrast Check</h2>
+            <!-- 설정 -->
+            <div class="generate-settings">
 
-            <p>Contrast ratio: <output id="contrast-ratio" for="color-palette">Not calculated yet</output></p>
+                <section class="card">
+                    <h2>Color Palette</h2>
 
-        </section>
+                    <label class="form-label" for="color-palette">Select a color palette</label>
+                    <select id="color-palette" name="color-palette" aria-describedby="palette-help">
+                        <option value="">Select a color palette</option>
+                    </select>
+                    <p id="palette-help">Available palettes depend on the selected color vision type.</p>
 
-
-        <section class="card">
-            <h2>High Contrast Options</h2>
-
-            <fieldset id="high-contrast-options">
-                <legend>Accessibility Options</legend>
-
-                <label>
-                    <input type="checkbox" id="bold-borders" name="bold-borders">
-                    Bold Borders
-                </label>
-
-                <label>
-                    <input type="checkbox" id="patterns" name="patterns">
-                    Patterns
-                </label>
-
-                <label>
-                    <input type="checkbox" id="value-labels" name="value-labels">
-                    Value Labels
-                </label>
-
-            </fieldset>
-
-        </section>
+                </section>
 
 
-        <section class="card">
-            <h2>Chart Summary</h2>
+                <section class="card">
+                    <h2>Contrast Check</h2>
 
-            <p id="chart-summary-text"></p>
-            <dl id="chart-statistics">
-                <dt>Maximum</dt>
-                <dd id="summary-maximum">-</dd>
+                    <p>Contrast ratio: <output id="contrast-ratio" for="color-palette">Not calculated yet</output></p>
 
-                <dt>Minimum</dt>
-                <dd id="summary-minimum">-</dd>
-
-                <dt>Difference</dt>
-                <dd id="summary-difference">-</dd>
-
-                <dt>Average</dt>
-                <dd id="summary-average">-</dd>
-            </dl>
-
-        </section>
+                </section>
 
 
-        <section class="card">
-            <h2>Additional Information</h2>
+                <section class="card">
+                    <h2>High Contrast Options</h2>
 
-            <details id="chart-details">
-                <summary>More Details</summary>
+                    <fieldset id="high-contrast-options">
+                        <legend>Accessibility Options</legend>
 
-                <p id="chart-details-content"></p>
-            </details>
-        </section>
+                        <label>
+                            <input type="checkbox" id="bold-borders" name="bold-borders">
+                            Bold Borders
+                        </label>
+
+                        <label>
+                            <input type="checkbox" id="patterns" name="patterns">
+                            Patterns
+                        </label>
+
+                        <label>
+                            <input type="checkbox" id="value-labels" name="value-labels">
+                            Value Labels
+                        </label>
+
+                    </fieldset>
+
+                </section>
+
+            </div>
 
 
-        <section class="card">
-            <h2>Chart Interactions</h2>
+            <!-- 요약 / 추가 정보 -->
+            <div class="generate-info">
 
-            <!-- MVP8; 툴팁/ 데이터 강조/ 범례 등등? -->
-        </section>
+                <section class="card">
+                    <h2>Chart Summary</h2>
 
-        <div>
+                    <p id="chart-summary-text"></p>
+                    <dl id="chart-statistics">
+                        <dt>Maximum</dt>
+                        <dd id="summary-maximum">-</dd>
+
+                        <dt>Minimum</dt>
+                        <dd id="summary-minimum">-</dd>
+
+                        <dt>Difference</dt>
+                        <dd id="summary-difference">-</dd>
+
+                        <dt>Average</dt>
+                        <dd id="summary-average">-</dd>
+                    </dl>
+
+                </section>
+
+
+                <section class="card">
+                    <h2>Additional Information</h2>
+
+                    <details id="chart-details">
+                        <summary>More Details</summary>
+
+                        <p id="chart-details-content"></p>
+                    </details>
+                </section>
+
+
+                <section class="card">
+                    <h2>Chart Interactions</h2>
+
+                    <!-- MVP8; 툴팁/ 데이터 강조/ 범례 등등? -->
+                </section>
+
+            </div>
+
+        </div>
+
+        <div class="generate-actions">
             <a id="back-to-input" class="button button-secondary" href="input.html">Back to Data Input</a>
             <button id="generate-chart" type="button">Generate</button>
         </div>
