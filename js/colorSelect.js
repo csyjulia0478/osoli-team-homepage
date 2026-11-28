@@ -79,11 +79,11 @@ function showContrast(palette) {
 function showPalette(container, palette) {
   const swatches = document.createElement("div");
   swatches.setAttribute("aria-hidden", "true");
-  swatches.style.cssText = "display:flex; gap:8px; margin:8px 0;";
+  swatches.style.cssText = "display:flex; flex-wrap:wrap; gap:8px; margin:8px 0;";
 
   palette.colors.forEach(color => {
     const chip = document.createElement("span");
-    chip.style.cssText = `width:32px; height:32px; border:1px solid #595959; border-radius:4px; background:${color};`;
+    chip.style.cssText = `flex-shrink:0; width:32px; height:32px; border:1px solid #595959; border-radius:4px; background:${color};`;
     swatches.appendChild(chip);
   });
 
