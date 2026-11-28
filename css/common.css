@@ -573,3 +573,15 @@ video {
 #example-graph img {
     width: 100%;
 }
+
+/* 시작 버튼: 모바일은 꽉 차게 */
+#start-input {
+    width: 100%;
+}
+
+/* 태블릿 이상: 원래 크기 */
+@media (min-width: 768px) {
+    #start-input {
+        width: auto;
+    }
+}
